@@ -1,0 +1,27 @@
+{
+  "name": "@styleshift/card",
+  "version": "0.0.1",
+  "description": "Card component for StyleShift UI",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "clean": "rm -rf dist node_modules/.cache coverage"
+  },
+  "devDependencies": {
+    "@styleshift/utils": "github:styleshift/utils",
+    "@types/react": "^19.0.2",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  },
+  "author": "Jeroen Gerits <jeroen@gerits.email>"
+}
