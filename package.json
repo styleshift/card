@@ -1,7 +1,8 @@
 {
   "name": "@styleshift/card",
   "version": "0.0.1",
-  "description": "Card component for StyleShift UI",
+  "description": "Card for StyleShift UI",
+  "author": "Jeroen Gerits <jeroen@gerits.email>",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -13,15 +14,18 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write .",
-    "clean": "rm -rf dist node_modules/.cache coverage"
+    "format": "prettier --write ."
+  },
+  "peerDependencies": {
+    "lucide-react": "^0.469.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@types/react": "^19.0.2",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@styleshift/utils": "github:styleshift/utils",
-    "@types/react": "^19.0.2",
     "prettier": "^3.4.2",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2"
-  },
-  "author": "Jeroen Gerits <jeroen@gerits.email>"
+    "tsup": "^8.3.5"
+  }
 }
