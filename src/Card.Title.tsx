@@ -2,18 +2,14 @@ import * as React from 'react';
 import { forwardRef } from 'react';
 import { cn } from '@styleshift/utils';
 import { CardTitleProps } from './types';
+import { card } from './Card.styles';
 
 export const CardTitle = forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ className, children, ...props }, ref) => {
+    const styles = card();
+
     return (
-      <h3
-        ref={ref}
-        className={cn(
-          'text-2xl font-semibold leading-none tracking-tight',
-          className,
-        )}
-        {...props}
-      >
+      <h3 ref={ref} className={cn(styles.title(), className)} {...props}>
         {children}
       </h3>
     );
