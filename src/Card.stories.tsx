@@ -24,28 +24,47 @@ const meta = {
   args: {
     children: defaultChildren,
   },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'A flexible container for grouping related content and actions.',
+      },
+    },
+  },
   argTypes: {
     unstyled: {
       control: 'boolean',
-      description: 'Remove all styles',
-      table: {
-        defaultValue: { summary: false },
-      },
+      description: 'When true, removes all default styling',
+      defaultValue: false,
     },
     separators: {
       control: 'boolean',
-      description: 'When true, shows separators between items',
+      description: 'When true, shows visual separators between card sections',
       defaultValue: true,
     },
-    children: {
-      table: {
-        disable: true,
-      },
+    border: {
+      control: 'boolean',
+      description: 'When true, shows a border around the card',
+      defaultValue: true,
+    },
+    disabled: {
+      control: 'boolean',
+      description:
+        'When true, disables all interactive elements within the card',
+      defaultValue: false,
+    },
+    transitions: {
+      control: 'boolean',
+      description:
+        'When true, enables smooth transitions for interactive states',
+      defaultValue: true,
     },
     className: {
-      table: {
-        disable: true,
-      },
+      table: { disable: true },
+    },
+    children: {
+      table: { disable: true },
     },
   },
 } satisfies Meta<typeof Card>;
@@ -53,12 +72,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    separators: true,
-    unstyled: false,
-  },
-};
+export const Default: Story = {};
 
 export const WithoutBorder: Story = {
   args: {

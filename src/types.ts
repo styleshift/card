@@ -8,6 +8,9 @@ export type CardContextProps = {
   unstyled?: boolean;
   separators?: boolean;
   border?: boolean;
+  disabled?: boolean;
+  transitions?: boolean;
+  ariaLabel?: string;
 };
 
 export type BaseProps = {

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import styles from './Card.styles';
-import { CardProps } from './types';
+import { CardHeaderProps, CardProps } from './types';
 import { twMerge } from 'tailwind-merge';
-import { CardContext } from './use-card';
-import useCard from './use-card';
+import useCard, { CardContext } from './use-card';
 
 const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
   (
@@ -13,14 +12,24 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
       unstyled = false,
       separators = true,
       border = true,
+      ariaLabel,
+      disabled = false,
       ...props
     },
     ref,
   ) => {
     const { root } = styles({ unstyled, separators, border });
+
     return (
-      <CardContext.Provider value={{ unstyled, separators, border }}>
-        <div ref={ref} className={twMerge(root(), className)} {...props}>
+      <CardContext.Provider value={{ unstyled, separators, border, disabled }}>
+        <div
+          ref={ref}
+          className={twMerge(root(), className)}
+          role="region"
+          aria-label={ariaLabel || 'Card content'}
+          aria-disabled={disabled}
+          {...props}
+        >
           {children}
         </div>
       </CardContext.Provider>
@@ -28,14 +37,16 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
   },
 );
 
-export function CardHeader({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+export function CardHeader({ className, ...props }: CardHeaderProps) {
   const {
     styles: { header },
   } = useCard();
-  return <div className={twMerge(header(), className)} {...props} />;
+
+  return (
+    <div className={twMerge(header(), className)} role="heading" {...props}>
+      {props.children}
+    </div>
+  );
 }
 
 export function CardContent({
