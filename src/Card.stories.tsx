@@ -4,33 +4,31 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './index';
 
 // Define content data separately
-const CARD_CONTENT = {
+const CARD_ITEMS = {
   header: 'Card Header',
   content: 'Card Content',
   footer: 'Card Footer',
 } as const;
 
 const CardTemplate = () => (
-  <Card>
+  <>
     <Card.Header>
-      <p>{CARD_CONTENT.header}</p>
+      <p>{CARD_ITEMS.header}</p>
     </Card.Header>
     <Card.Content>
-      <p>{CARD_CONTENT.content}</p>
+      <p>{CARD_ITEMS.content}</p>
     </Card.Content>
     <Card.Footer>
-      <p>{CARD_CONTENT.footer}</p>
+      <p>{CARD_ITEMS.footer}</p>
     </Card.Footer>
-  </Card>
+  </>
 );
 
 const meta = {
   title: 'Card',
+  // @ts-ignore
   component: Card,
   tags: ['autodocs'],
-  args: {
-    children: <CardTemplate />,
-  },
   parameters: {
     docs: {
       description: {
@@ -40,26 +38,21 @@ const meta = {
     },
   },
   argTypes: {
-    disabled: {
-      control: 'boolean',
-      description: 'Disables all interactions',
-      defaultValue: false,
-    },
-    unstyled: {
-      control: 'boolean',
-      description: 'When true, removes all default styling',
-      defaultValue: false,
+    // @ts-ignore
+    border: {
+      control: { type: 'boolean' },
+      description: 'Shows outer border',
+      defaultValue: true,
+      table: {
+        defaultValue: { summary: true },
+      },
     },
     separators: {
-      control: 'boolean',
+      control: { type: 'boolean' },
       description: 'When true, shows visual separators between card sections',
-      defaultValue: true,
-    },
-    transitions: {
-      control: 'boolean',
-      description:
-        'When true, enables smooth transitions for interactive states',
-      defaultValue: true,
+      table: {
+        defaultValue: { summary: true },
+      },
     },
     className: {
       table: { disable: true },
@@ -74,6 +67,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {
+    children: CardTemplate(),
+  },
   parameters: {
     docs: {
       description: {
@@ -85,7 +81,7 @@ export const Default: Story = {
 
 export const WithoutSeparators: Story = {
   args: {
-    ...Default.args,
+    children: CardTemplate(),
     separators: false,
   },
   parameters: {
@@ -97,9 +93,22 @@ export const WithoutSeparators: Story = {
   },
 };
 
-export const Unstyled: Story = {
+export const WithoutBorder: Story = {
   args: {
     ...Default.args,
+    border: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'No outer border.',
+      },
+    },
+  },
+};
+export const Unstyled: Story = {
+  args: {
+    children: CardTemplate(),
     unstyled: true,
   },
   parameters: {

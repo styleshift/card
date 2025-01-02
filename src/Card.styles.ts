@@ -12,30 +12,34 @@ const styles = tv({
     separators: true,
     disabled: false,
     transitions: true,
+    border: true,
   },
   variants: {
     unstyled: {
       false: {
-        root: ['border border-border rounded-lg', 'text-card-foreground'],
-        header: ['  px-4 py-3 border-b '],
-        content: ['px-4 py-3'],
-        footer: ['px-4 py-3 border-t '],
+        root: ['border rounded-lg text-card-foreground'],
+        header: ['  px-4 py-3 border-b text-sm font-medium text-foreground'],
+        content: ['px-4 py-3 text-sm text-foreground'],
+        footer: ['px-4 py-3 border-t text-sm text-muted-foreground'],
       },
       true: {},
     },
     separators: {
       true: {
-        header: 'border-b-border',
-        footer: 'border-t-border',
+        header: 'border-border',
+        footer: 'border-border',
       },
       false: {
-        header: 'border-t-transparent',
-        footer: 'border-b-transparent',
+        header: 'border-transparent',
+        footer: 'border-transparent',
       },
     },
-    disabled: {
+    border: {
       true: {
-        root: 'opacity-50',
+        root: 'border-border',
+      },
+      false: {
+        root: 'border-transparent',
       },
     },
   },

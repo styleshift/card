@@ -11,22 +11,21 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
       children,
       unstyled = false,
       separators = true,
+      border = true,
       ariaLabel,
-      disabled = false,
       ...props
     },
     ref,
   ) => {
-    const { root } = styles({ unstyled, separators, disabled });
+    const { root } = styles({ unstyled, separators, border });
 
     return (
-      <CardContext.Provider value={{ unstyled, separators, disabled }}>
+      <CardContext.Provider value={{ unstyled, separators, border }}>
         <div
           ref={ref}
           className={twMerge(root(), className)}
           role="region"
           aria-label={ariaLabel || 'Card content'}
-          aria-disabled={disabled}
           {...props}
         >
           {children}
