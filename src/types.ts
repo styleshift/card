@@ -7,6 +7,7 @@ export type CardStyles = ReturnType<typeof styles>;
 export type CardContextProps = {
   unstyled?: boolean;
   separators?: boolean;
+  border?: boolean;
 };
 
 export type BaseProps = {

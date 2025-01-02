@@ -53,40 +53,52 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    separators: true,
+    unstyled: false,
+  },
+};
+
+export const WithoutBorder: Story = {
+  args: {
+    ...Default.args,
+    border: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'An card without a border',
+      },
+    },
+  },
+};
+
+export const WithoutSeparators: Story = {
+  args: {
+    ...Default.args,
+    separators: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'An card with visual separators between items',
+      },
+    },
+  },
+};
 
 export const Unstyled: Story = {
   args: {
+    ...Default.args,
     unstyled: true,
   },
-};
-
-export const WithoutHeader: Story = {
-  args: {
-    children: (
-      <>
-        <Card.Content>
-          <p>Card Content</p>
-        </Card.Content>
-        <Card.Footer>
-          <p>Card Footer</p>
-        </Card.Footer>
-      </>
-    ),
-  },
-};
-
-export const WithoutFooter: Story = {
-  args: {
-    children: (
-      <>
-        <Card.Header>
-          <p>Card Header</p>
-        </Card.Header>
-        <Card.Content>
-          <p>Card Content</p>
-        </Card.Content>
-      </>
-    ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'A bare card without any default styling applied, useful for custom styling implementations.',
+      },
+    },
   },
 };

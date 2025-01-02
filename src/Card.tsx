@@ -7,13 +7,19 @@ import useCard from './use-card';
 
 const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
   (
-    { className, children, unstyled = false, separators = true, ...props },
+    {
+      className,
+      children,
+      unstyled = false,
+      separators = true,
+      border = true,
+      ...props
+    },
     ref,
   ) => {
-    const { root } = styles({ unstyled, separators });
-
+    const { root } = styles({ unstyled, separators, border });
     return (
-      <CardContext.Provider value={{ unstyled }}>
+      <CardContext.Provider value={{ unstyled, separators, border }}>
         <div ref={ref} className={twMerge(root(), className)} {...props}>
           {children}
         </div>
