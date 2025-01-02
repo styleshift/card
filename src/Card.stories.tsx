@@ -3,18 +3,25 @@ import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './index';
 
-const defaultChildren = (
-  <>
+// Define content data separately
+const CARD_CONTENT = {
+  header: 'Card Header',
+  content: 'Card Content',
+  footer: 'Card Footer',
+} as const;
+
+const CardTemplate = () => (
+  <Card>
     <Card.Header>
-      <p>Card Header</p>
+      <p>{CARD_CONTENT.header}</p>
     </Card.Header>
     <Card.Content>
-      <p>Card Content</p>
+      <p>{CARD_CONTENT.content}</p>
     </Card.Content>
     <Card.Footer>
-      <p>Card Footer</p>
+      <p>{CARD_CONTENT.footer}</p>
     </Card.Footer>
-  </>
+  </Card>
 );
 
 const meta = {
@@ -22,7 +29,7 @@ const meta = {
   component: Card,
   tags: ['autodocs'],
   args: {
-    children: defaultChildren,
+    children: <CardTemplate />,
   },
   parameters: {
     docs: {
@@ -72,7 +79,15 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Default card configuration with all features enabled.',
+      },
+    },
+  },
+};
 
 export const WithoutBorder: Story = {
   args: {
