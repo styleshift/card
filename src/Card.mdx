@@ -1,8 +1,22 @@
-import { Meta, Title, Description, Controls, Canvas } from '@storybook/blocks';
+import { Meta, Story, Canvas, Controls, Stories } from '@storybook/blocks';
 import * as CardStories from './Card.stories';
 
 <Meta of={CardStories} />
 
 # Card
 
-A flexible card component
+A card is a container for content.
+
+```tsx
+<Card>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem commodi,
+  enim ex inventore labore laborum laudantium natus nobis pariatur perferendis
+  placeat, reprehenderit voluptate. Atque cumque ducimus magni quia quos.
+</Card>
+```
+
+<Canvas of={CardStories.Default} />
+
+<Controls />
+
+<Stories />

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import styles from './styles';
+import styles from './Card.styles';
 import type { CardProps } from './types';
 import { CardProvider } from './use-card';
-import { twMerge } from 'tailwind-merge';
+
 export function Card({
   children,
   className,
@@ -13,9 +13,7 @@ export function Card({
 
   return (
     <CardProvider value={{ unstyled }}>
-      <div className={twMerge(classes.root({ className, ...props }))}>
-        {children}
-      </div>
+      <div className={classes.root({ className, ...props })}>{children}</div>
     </CardProvider>
   );
 }

@@ -1,6 +1,6 @@
 import type styles from './Card.styles';
-import * as React from 'react';
-import { VariantProps } from 'tailwind-variants';
+import type * as React from 'react';
+import type { VariantProps } from 'tailwind-variants';
 
 export type CardStyles = ReturnType<typeof styles>;
 
