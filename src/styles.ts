@@ -1,4 +1,4 @@
-import { tv } from '@styleshift/utils';
+import { tv } from 'tailwind-variants';
 
 export default tv({
   slots: {

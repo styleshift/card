@@ -1,7 +1,8 @@
-import styles from './styles';
-import { VariantProps } from '@styleshift/utils';
+import type styles from './Card.styles';
+import * as React from 'react';
+import { VariantProps } from 'tailwind-variants';
 
-type CardStyles = ReturnType<typeof styles>;
+export type CardStyles = ReturnType<typeof styles>;
 
 export type CardContextProps = {
   unstyled?: boolean;
@@ -11,6 +12,7 @@ export type BaseProps = {
   children: React.ReactNode;
   className?: string;
 };
+
 export type CardRootVariants = VariantProps<CardStyles['root']>;
 
-export type AccordionProps = BaseProps & CardRootVariants & CardContextProps;
+export type CardProps = BaseProps & CardRootVariants & CardContextProps;
