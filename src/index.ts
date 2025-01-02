@@ -1,6 +1,6 @@
 import Card from './Card';
+import { useCard } from './use-card';
 import type { CardProps } from './types';
-import useCard from './use-card';
 
 export { Card, useCard, type CardProps };
 

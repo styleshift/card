@@ -1,23 +1,48 @@
+import * as React from 'react';
+
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from './index';
-import * as React from 'react';
+
+const defaultChildren = (
+  <>
+    <Card.Header>
+      <p>Card Header</p>
+    </Card.Header>
+    <Card.Content>
+      <p>Card Content</p>
+    </Card.Content>
+    <Card.Footer>
+      <p>Card Footer</p>
+    </Card.Footer>
+  </>
+);
 
 const meta = {
   title: 'Card',
   component: Card,
   tags: ['autodocs'],
+  args: {
+    children: defaultChildren,
+  },
   argTypes: {
     unstyled: {
       control: 'boolean',
-      description: 'When false, no styles will be applied',
-      defaultValue: false,
+      description: 'Remove all styles',
+      table: {
+        defaultValue: { summary: false },
+      },
     },
-    className: {
+    separators: {
+      control: 'boolean',
+      description: 'When true, shows separators between items',
+      defaultValue: true,
+    },
+    children: {
       table: {
         disable: true,
       },
     },
-    children: {
+    className: {
       table: {
         disable: true,
       },
@@ -28,27 +53,39 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default: Story = {};
+
+export const Unstyled: Story = {
+  args: {
+    unstyled: true,
+  },
+};
+
+export const WithoutHeader: Story = {
   args: {
     children: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem
-        commodi, enim ex inventore labore laborum laudantium natus nobis
-        pariatur perferendis placeat, reprehenderit voluptate. Atque cumque
-        ducimus magni quia quos.
+        <Card.Content>
+          <p>Card Content</p>
+        </Card.Content>
+        <Card.Footer>
+          <p>Card Footer</p>
+        </Card.Footer>
       </>
     ),
   },
 };
 
-export const Unstyled: Story = {
+export const WithoutFooter: Story = {
   args: {
-    unstyled: true,
     children: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis error
-        in minus porro quos sed tempore ullam voluptatem voluptates. Aut ea enim
-        fuga nam optio qui recusandae vitae voluptas voluptatem!
+        <Card.Header>
+          <p>Card Header</p>
+        </Card.Header>
+        <Card.Content>
+          <p>Card Content</p>
+        </Card.Content>
       </>
     ),
   },

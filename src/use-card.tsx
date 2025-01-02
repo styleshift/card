@@ -1,26 +1,28 @@
-import * as React from 'react';
-import type { CardContextProps } from './types';
+'use client';
 
-const CardContext = React.createContext<CardContextProps | undefined>(
+import { createContext, useContext } from 'react';
+import styles from './Card.styles';
+import { CardContextProps } from './types';
+
+export const CardContext = createContext<CardContextProps | undefined>(
   undefined,
 );
 
-export function CardProvider({
-  children,
-  value,
-}: {
-  children: React.ReactNode;
-  value: CardContextProps;
-}) {
-  return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
+interface UseCardReturn extends CardContextProps {
+  styles: ReturnType<typeof styles>;
 }
 
-export function useCard() {
-  const context = React.useContext(CardContext);
-  if (context === undefined) {
+export function useCard(): UseCardReturn {
+  const context = useContext(CardContext);
+
+  if (!context) {
     throw new Error('useCard must be used within a CardProvider');
   }
-  return context;
+
+  return {
+    ...context,
+    styles: styles(context),
+  };
 }
 
 export default useCard;
