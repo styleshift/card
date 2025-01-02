@@ -6,6 +6,23 @@ const meta = {
   title: 'Card',
   component: Card,
   tags: ['autodocs'],
+  argTypes: {
+    unstyled: {
+      control: 'boolean',
+      description: 'When false, no styles will be applied',
+      defaultValue: false,
+    },
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
 } satisfies Meta<typeof Card>;
 
 export default meta;

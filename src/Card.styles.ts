@@ -15,10 +15,7 @@ const styles = tv({
   variants: {
     unstyled: {
       false: {
-        root: [
-          'rounded-lg border bg-card text-card-foreground shadow-sm',
-          'dark:bg-card-dark dark:text-card-dark-foreground',
-        ],
+        root: ['p-4', 'rounded shadow-sm border border-border'],
         header: ['flex flex-col space-y-1.5 p-6'],
         content: ['p-6 pt-0'],
         footer: ['flex items-center p-6 pt-0'],

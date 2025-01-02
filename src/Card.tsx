@@ -9,7 +9,7 @@ export function Card({
   unstyled = false,
   ...props
 }: CardProps) {
-  const classes = styles();
+  const classes = styles({ unstyled });
 
   return (
     <CardProvider value={{ unstyled }}>
