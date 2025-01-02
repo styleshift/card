@@ -10,17 +10,13 @@ const styles = tv({
   defaultVariants: {
     unstyled: false,
     separators: true,
-    border: true,
+    disabled: false,
+    transitions: true,
   },
   variants: {
     unstyled: {
       false: {
-        root: [
-          'border rounded-lg',
-          'bg-card',
-          'border border-transparent',
-          'text-card-foreground',
-        ],
+        root: ['border border-border rounded-lg', 'text-card-foreground'],
         header: ['  px-4 py-3 border-b '],
         content: ['px-4 py-3'],
         footer: ['px-4 py-3 border-t '],
@@ -29,20 +25,17 @@ const styles = tv({
     },
     separators: {
       true: {
-        header: 'border-border',
-        footer: 'border-border',
+        header: 'border-b-border',
+        footer: 'border-t-border',
       },
       false: {
-        header: 'border-transparent',
-        footer: 'border-transparent',
+        header: 'border-t-transparent',
+        footer: 'border-b-transparent',
       },
     },
-    border: {
+    disabled: {
       true: {
-        root: 'border-border',
-      },
-      false: {
-        root: 'border-transparent',
+        root: 'opacity-50',
       },
     },
   },

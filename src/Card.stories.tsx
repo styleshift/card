@@ -40,6 +40,11 @@ const meta = {
     },
   },
   argTypes: {
+    disabled: {
+      control: 'boolean',
+      description: 'Disables all interactions',
+      defaultValue: false,
+    },
     unstyled: {
       control: 'boolean',
       description: 'When true, removes all default styling',
@@ -49,17 +54,6 @@ const meta = {
       control: 'boolean',
       description: 'When true, shows visual separators between card sections',
       defaultValue: true,
-    },
-    border: {
-      control: 'boolean',
-      description: 'When true, shows a border around the card',
-      defaultValue: true,
-    },
-    disabled: {
-      control: 'boolean',
-      description:
-        'When true, disables all interactive elements within the card',
-      defaultValue: false,
     },
     transitions: {
       control: 'boolean',
@@ -84,20 +78,6 @@ export const Default: Story = {
     docs: {
       description: {
         story: 'Default card configuration with all features enabled.',
-      },
-    },
-  },
-};
-
-export const WithoutBorder: Story = {
-  args: {
-    ...Default.args,
-    border: false,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'An card without a border',
       },
     },
   },
