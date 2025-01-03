@@ -35,7 +35,7 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
   },
 );
 
-export function CardHeader({ className, ...props }: CardHeaderProps) {
+export const CardHeader = ({ className, ...props }: CardHeaderProps) => {
   const {
     styles: { header },
   } = useCard();
@@ -45,27 +45,27 @@ export function CardHeader({ className, ...props }: CardHeaderProps) {
       {props.children}
     </div>
   );
-}
+};
 
-export function CardContent({
+export const CardContent = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const {
     styles: { content },
   } = useCard();
   return <div className={twMerge(content(), className)} {...props} />;
-}
+};
 
-export function CardFooter({
+export const CardFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const {
     styles: { footer },
   } = useCard();
   return <div className={twMerge(footer(), className)} {...props} />;
-}
+};
 
 const Card = Object.assign(CardRoot, {
   Header: CardHeader,
