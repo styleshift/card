@@ -2,12 +2,14 @@ import * as React from 'react';
 import useCard from './use-card';
 import { twMerge } from 'tailwind-merge';
 
-export const CardContent = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+export const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
   const {
     styles: { content },
   } = useCard();
-  return <div className={twMerge(content(), className)} {...props} />;
-};
+  return <div ref={ref} className={twMerge(content(), className)} {...props} />;
+});
+
+CardContent.displayName = 'CardContent';
