@@ -1,8 +1,11 @@
 import * as React from 'react';
 import styles from './Card.styles';
-import { CardHeaderProps, CardProps } from './types';
+import { CardProps } from './types';
 import { twMerge } from 'tailwind-merge';
-import useCard, { CardContext } from './use-card';
+import { CardContext } from './use-card';
+import { CardHeader } from './Card.Header';
+import { CardContent } from './Card.Content';
+import { CardFooter } from './Card.Footer';
 
 const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
   (
@@ -34,38 +37,6 @@ const CardRoot = React.forwardRef<HTMLDivElement, CardProps>(
     );
   },
 );
-
-export const CardHeader = ({ className, ...props }: CardHeaderProps) => {
-  const {
-    styles: { header },
-  } = useCard();
-
-  return (
-    <div className={twMerge(header(), className)} role="heading" {...props}>
-      {props.children}
-    </div>
-  );
-};
-
-export const CardContent = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  const {
-    styles: { content },
-  } = useCard();
-  return <div className={twMerge(content(), className)} {...props} />;
-};
-
-export const CardFooter = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  const {
-    styles: { footer },
-  } = useCard();
-  return <div className={twMerge(footer(), className)} {...props} />;
-};
 
 const Card = Object.assign(CardRoot, {
   Header: CardHeader,
